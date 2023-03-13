@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import  Post
+from .forms import PostForm
 
 
 posts = [
@@ -28,3 +29,8 @@ def siteblog(request):
 
 def details(request):
     return render(request, "setblog/about.html")
+def create_post(request):
+    if request.method =='GET':
+        context = {'forms':PostForm(request.POST)}
+        return render(request, 'blog/post_form.html', context)
+      
