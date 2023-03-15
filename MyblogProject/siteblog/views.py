@@ -1,8 +1,18 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import  Post
 from django.contrib import messages
 from .forms import PostForm
 
+
+
+def edit_post(request,id):
+    edit=get_object_or_404(Post,id)
+    if request.method == 'Get':
+        context={'form':PostForm(instance=edit),'id':id}
+
+        return render(request,'siteblog/post_form.html',context)
+
+    
 
 
 def create_post(request):
