@@ -6,9 +6,9 @@ from .forms import PostForm
 
 
 def edit_post(request,id):
-    edit=get_object_or_404(Post,id)
-    if request.method == 'Get':
-        context={'form':PostForm(instance=edit),'id':id}
+    edit=get_object_or_404(Post, id=id)
+    if request.method == 'GET':
+        context={'form' : PostForm(instance=edit), 'id':id}
 
         return render(request,'siteblog/post_form.html',context)
 
