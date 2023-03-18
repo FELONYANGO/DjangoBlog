@@ -11,7 +11,11 @@ def edit_post(request,id):
         context={'form' : PostForm(instance=edit), 'id':id}
 
         return render(request,'siteblog/post_form.html',context)
-
+    elif request.method == 'POST':
+        form = PostForm(request.POST, instance=edit)
+        if form.is_valid():
+            form.save()
+            
     
 
 
