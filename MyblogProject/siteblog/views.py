@@ -15,6 +15,12 @@ def edit_post(request,id):
         form = PostForm(request.POST, instance=edit)
         if form.is_valid():
             form.save()
+            messages.success(request," account updated successfully")
+            return redirect('siteblog')
+        
+        else:
+            messages.error(request,"there seem to be an error in your entry")
+            return render(request, 'siteblog/post_form.html', {'form': form})
             
     
 
