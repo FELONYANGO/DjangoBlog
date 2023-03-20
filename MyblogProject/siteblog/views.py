@@ -21,6 +21,20 @@ def edit_post(request,id):
         else:
             messages.error(request,"there seem to be an error in your entry")
             return render(request, 'siteblog/post_form.html', {'form': form})
+        
+def delete_post(request, id):
+    delete_post_form = get_object_or_404(Post,pk=id)
+    context={'delete_post_form': delete_post_form}
+
+    if request.method == 'GET':
+       return render(request, 'siteblog/delete_post.html',context=context)
+    
+    elif request.method == 'POST':
+      delete_post_form.delete()
+      messages.seccess(request,'account deleted successfully')
+      return redirect('siteblog')
+
+
             
     
 
