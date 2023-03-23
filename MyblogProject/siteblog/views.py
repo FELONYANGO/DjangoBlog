@@ -32,7 +32,7 @@ def delete_post(request, id):
     elif request.method == 'POST':
       delete_post_form.delete()
       messages.success(request,' account deleted successfully ')
-      return redirect('siteblog')
+      return redirect(' siteblog ')
 
 
             
