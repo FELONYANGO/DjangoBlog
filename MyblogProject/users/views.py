@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from .forms import  LoginForm
 
 #sign__in view
@@ -26,4 +26,9 @@ def sign_in(request):
         messages.error(request, 'Invalid username or password')
         return render(request,'users/login.html',{'form': form})
 
+
+def sign_out(request):
+    logout(request)
+    messages.success(request, f'you have been signed out successfully')
+    return redirect('login')
     
