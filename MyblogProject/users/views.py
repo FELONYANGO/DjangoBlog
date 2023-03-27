@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
-from .forms import  LoginForm
+from .forms import  LoginForm,RegisterForm
 
 #sign__in view
 def sign_in(request):
@@ -31,4 +31,9 @@ def sign_out(request):
     logout(request)
     messages.success(request, f'you have been signed out successfully')
     return redirect('login')
+
+def sign_up(request):
+    if request.method == 'GET':
+        form=RegisterForm()
+        return render(request, 'user/register.html', {'form': form})
     
