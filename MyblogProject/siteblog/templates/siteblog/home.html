@@ -10,7 +10,7 @@
        {% if request.user.is_authenticated %}
        <p><a href="{% url 'post-edit' post.id %}">Edit</a></p>
        <a href="{% url 'post-delete' post.id%}">Delete</a>
-
+            {% endif %}
     {% endfor %}   
     
 {% endblock %}<p><a href="{% url 'post-edit' post.id %}">Edit</a></p>
